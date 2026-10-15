@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #511253;
+  background-image:
+    linear-gradient(rgba(61, 242, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 242, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  }
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: xx-large;
+  color: rgb(0, 0, 0);
+}
+
+
+
+#hangman {
+  margin: 0;
+}
+
+#Guss {
+  display: flex;
+  align-items: baseline;
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 20px;
+  width: 800px;
+  margin: 10px;
+  font-family: "Freckle Face", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: larger;
+  }
+
+.category-option {
+  border: 1px;
+    border-radius: 50px;
+    padding: 8px;
+    background-color: rgb(35, 7, 62);
+    color: #ffff;
+  
+    font-family: "Freckle Face", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+#lives {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size:x-large;
+
+}
+
+#lives h3 {
+  margin: 0;
+}
+
+.heart {
+  color: red;
+  font-size: 28px;
+}
+
+#img {
+  position: absolute;
+  left: 30px;
+  top: 150px;
+  width: 400px;
+  margin: 0;
+  margin-top: 60px;
+}
+
+
+
