@@ -1,10 +1,10 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #511253;
+  background-color: #301149;
   background-image:
-    linear-gradient(rgba(61, 242, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(61, 242, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(61, 242, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 242, 255, 0.10) 1px, transparent 1px);
   background-size: 40px 40px;
   }
 
@@ -93,7 +93,67 @@ body {
   width: 400px;
   margin: 0;
   margin-top: 60px;
+  margin-left: 85px;
 }
 
+#keyboard {
+  position: absolute;
+  top: 60%;                        /* how far down */
+  left: 67%;                       /* between title and lives */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-align: center;
+  margin-top: 90px;
+  
+  
+}
 
+.letters{
+  padding: 10px;
+  font-size:small;
+  border:black 3px  solid;
+  border-radius: 30px;
+  background-color: cyan;
+  width: 90px;
+  margin: 2px;  
+  
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size:x-large;
+  
+}
 
+#start-btn{
+    padding: 10px;
+  font-size:small;
+  border:black 3px  solid;
+  border-radius: 30px;
+  background-color: rgb(26, 255, 0);
+  width: 90px;
+  margin: 2px;  
+  
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size:x-large;
+}
+
+#buttons{
+  margin-right: 899px;
+}
+
+#restart{
+   padding: 10px;
+  font-size:small;
+  border:black 3px  solid;
+  border-radius: 30px;
+  background-color: rgb(255, 251, 0);
+  width: 90px;
+  margin: 2px;  
+  
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size:x-large;
+}
