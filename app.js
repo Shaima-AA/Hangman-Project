@@ -1,15 +1,14 @@
 let randomWord = "";
 let guessed = [];   // letters already picked
-let lives = 6;
-
+let mistakeNo = 0;
 const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "RICE", "PIZZA", "SUSHI", "CAT", "LION", "DUCK"]
 //caching
 const startButton = document.querySelector('#start-btn')
 const restartButton = document.querySelector('#restart')
 const letters = document.querySelectorAll('.letters')
-const hearts = document.querySelectorAll('.heart')
 const wordDisplay = document.querySelector('#word-display')
 const hintMessage = document.querySelector('#hint')
+const fullBody = document.querySelector('#img')
 
 console.log(startButton)
 console.log(restartButton)
@@ -21,7 +20,7 @@ function startGame() {
     lives = 6;
     guessed = []
     // ...reset lives, pick the word, reset buttons and hearts...
-
+    fullBody.src= "./body parts/gallows-only.png"
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
     randomWord = wordsArray[randomIndex];//chooses randomly a word from the wordsArray array
     console.log(randomWord)
@@ -33,8 +32,9 @@ function startGame() {
     for (let i = 0; i < hearts.length; i++) {
         hearts[i].style.visibility = "visible";
     }
-let blanks = wordDisplay
+
     //blanks
+    let blanks = wordDisplay
     wordDisplay.innerHTML = ""; //clear 
 
     for (let i = 0; i < randomWord.length; i++) {
@@ -55,24 +55,36 @@ let blanks = wordDisplay
 
     hintMessage.appendChild(showHint);
 
-    
-    }
 
-    function lettersChoosing(event){
-       let chooseLetter = event.target.textContent
-        for(let i=0; i<randomWord.length; i++){
+}
 
-            if(chooseLetter === randomWord[i]){
-                wordDisplay.textContent = randomWord[i]
-            }
-        }
+function lettersChoosing(event) {
+    let clickedLetter = event.target.textContent
+    const Blanks = wordDisplay.querySelectorAll('span');   // the individual blanks
+    let found = false; 
+
+ 
+
+    for (let i = 0; i < randomWord.length; i++) {
         
-    }
-
-
-            
+        if (clickedLetter === randomWord[i]) {
+            Blanks[i].textContent = clickedLetter;   // only blank number i
+            event.target.style.visibility = 'hidden'
+            found = true;
+            return found;
+        } 
         
-          
+        
+
+}}
+
+
+
+
+
+
+
+
 
 
 
@@ -81,6 +93,7 @@ let blanks = wordDisplay
 //Event Listner
 startButton.addEventListener('click', startGame)
 restartButton.addEventListener('click', startGame)
-for(let i=0; i<letters.length; i++){
-letters[i].addEventListener('click',lettersChoosing)
+for (let i = 0; i < letters.length; i++) {
+    letters[i].addEventListener('click', lettersChoosing)
 }
+
