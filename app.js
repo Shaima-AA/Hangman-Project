@@ -1,4 +1,4 @@
-let word = "";
+let randomWord = "";
 let guessed = [];   // letters already picked
 let lives = 6;
 
@@ -23,8 +23,8 @@ function startGame() {
     // ...reset lives, pick the word, reset buttons and hearts...
 
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
-    word = wordsArray[randomIndex];
-    console.log(word)
+    randomWord = wordsArray[randomIndex];//chooses randomly a word from the wordsArray array
+    console.log(randomWord)
 
     for (let i = 0; i < letters.length; i++) {
         letters[i].disabled = false
@@ -33,28 +33,47 @@ function startGame() {
     for (let i = 0; i < hearts.length; i++) {
         hearts[i].style.visibility = "visible";
     }
-
+let blanks = wordDisplay
     //blanks
     wordDisplay.innerHTML = ""; //clear 
 
-    for (let i = 0; i < word.length; i++) {
+    for (let i = 0; i < randomWord.length; i++) {
         const blank = document.createElement('span');
-        blank.dataset.letter = word[i];
+        blank.dataset.letter = randomWord[i];
         wordDisplay.appendChild(blank);
     }
     hintMessage.innerHTML = "";
     const showHint = document.createElement('p');
 
-    if (["ITALY", "SPAIN", "BAHRAIN"].includes(word)) {
+    if (["ITALY", "SPAIN", "BAHRAIN"].includes(randomWord)) {
         showHint.textContent = "Hint: Country";
-    } else if (["RICE", "PIZZA", "SUSHI"].includes(word)) {
+    } else if (["RICE", "PIZZA", "SUSHI"].includes(randomWord)) {
         showHint.textContent = "Hint: Food";
     } else {
         showHint.textContent = "Hint: Animal";
     }
 
     hintMessage.appendChild(showHint);
-}
+
+    
+    }
+
+    function lettersChoosing(event){
+       let chooseLetter = event.target.textContent
+        for(let i=0; i<randomWord.length; i++){
+
+            if(chooseLetter === randomWord[i]){
+                wordDisplay.textContent = randomWord[i]
+            }
+        }
+        
+    }
+
+
+            
+        
+          
+
 
 
 
@@ -62,3 +81,6 @@ function startGame() {
 //Event Listner
 startButton.addEventListener('click', startGame)
 restartButton.addEventListener('click', startGame)
+for(let i=0; i<letters.length; i++){
+letters[i].addEventListener('click',lettersChoosing)
+}
