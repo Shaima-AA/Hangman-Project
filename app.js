@@ -13,25 +13,25 @@ const fullBody = document.querySelector('#img')
 console.log(startButton)
 console.log(restartButton)
 console.log(letters)
-console.log(hearts)
 
 //functions
 function startGame() {
-    lives = 6;
+    mistakeNo = 0;
+    fullBody.src = stages[0]
     guessed = []
-    // ...reset lives, pick the word, reset buttons and hearts...
-    fullBody.src= "./body parts/gallows-only.png"
+    restartButton.style.backgroundColor = ''
+
+
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
     randomWord = wordsArray[randomIndex];//chooses randomly a word from the wordsArray array
     console.log(randomWord)
 
     for (let i = 0; i < letters.length; i++) {
         letters[i].disabled = false
-        letters[i].classList.remove("green", "red")
+        letters[i].style.backgroundColor = ''
+        letters[i].style.visibility = "visible"
     }
-    for (let i = 0; i < hearts.length; i++) {
-        hearts[i].style.visibility = "visible";
-    }
+
 
     //blanks
     let blanks = wordDisplay
@@ -61,30 +61,44 @@ function startGame() {
 function lettersChoosing(event) {
     let clickedLetter = event.target.textContent
     const Blanks = wordDisplay.querySelectorAll('span');   // the individual blanks
-    let found = false; 
+    let found = false;
 
- 
+
 
     for (let i = 0; i < randomWord.length; i++) {
-        
+
         if (clickedLetter === randomWord[i]) {
             Blanks[i].textContent = clickedLetter;   // only blank number i
             event.target.style.visibility = 'hidden'
             found = true;
-            return found;
-        } 
-        
-        
+        }
+    }
+    if (found === false) {
+        mistakes(event)
+    }
+}
 
-}}
+const stages = [
+    "./body parts/gallows-only.png",
+    
+    "./body parts/head-only-with-gallows.png",
 
+    "./body parts/right arm.png",
 
+    "./body parts/left arm.png",
 
+    "./body parts/3-head-both-arms-body.png",
 
+    "./body parts/right leg.png",
 
-
-
-
+    "./body parts/left leg.png"
+]
+function mistakes(event) {
+    mistakeNo++
+    event.target.style.backgroundColor = 'red'
+    event.target.disabled = true
+    fullBody.src = stages[mistakeNo]
+}
 
 
 
@@ -96,4 +110,5 @@ restartButton.addEventListener('click', startGame)
 for (let i = 0; i < letters.length; i++) {
     letters[i].addEventListener('click', lettersChoosing)
 }
+
 
