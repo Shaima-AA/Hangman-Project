@@ -9,6 +9,7 @@ const letters = document.querySelectorAll('.letters')
 const wordDisplay = document.querySelector('#word-display')
 const hintMessage = document.querySelector('#hint')
 const fullBody = document.querySelector('#img')
+const message = document.querySelector('#message')
 
 console.log(startButton)
 console.log(restartButton)
@@ -20,6 +21,7 @@ function startGame() {
     fullBody.src = stages[0]
     guessed = []
     restartButton.style.backgroundColor = ''
+    message.textContent = ""
 
 
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
@@ -63,8 +65,6 @@ function lettersChoosing(event) {
     const Blanks = wordDisplay.querySelectorAll('span');   // the individual blanks
     let found = false;
 
-
-
     for (let i = 0; i < randomWord.length; i++) {
 
         if (clickedLetter === randomWord[i]) {
@@ -76,11 +76,34 @@ function lettersChoosing(event) {
     if (found === false) {
         mistakes(event)
     }
+
+    if (found === true) {
+        let won = true
+        for (let i = 0; i < Blanks.length; i++) {
+            if (Blanks[i].textContent === "") {
+                won = false
+            }
+        }
+        if (won === true) {
+            message.textContent = "You won!"
+            disableLetters()
+        }
+    }
+    if (mistakeNo === 6) {
+        message.textContent = "You lost! The word was " + randomWord
+        disableLetters()
+    }
+
+}
+function disableLetters(){
+    for(let i=0; i<letters.length; i++){
+        letters[i].disabled = true
+    }
 }
 
 const stages = [
     "./body parts/gallows-only.png",
-    
+
     "./body parts/head-only-with-gallows.png",
 
     "./body parts/right arm.png",
