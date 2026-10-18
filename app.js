@@ -41,8 +41,21 @@ function startGame() {
         const blank = document.createElement('span');
         blank.dataset.letter = word[i];
         wordDisplay.appendChild(blank);
+    }
+    hintMessage.innerHTML = "";
+    const showHint = document.createElement('p');
 
-    }}
+    if (["ITALY", "SPAIN", "BAHRAIN"].includes(word)) {
+        showHint.textContent = "Hint: Country";
+    } else if (["RICE", "PIZZA", "SUSHI"].includes(word)) {
+        showHint.textContent = "Hint: Food";
+    } else {
+        showHint.textContent = "Hint: Animal";
+    }
+
+    hintMessage.appendChild(showHint);
+}
+
 
 
 
