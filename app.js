@@ -1,7 +1,7 @@
 let randomWord = "";
 let guessed = [];   // letters already picked
 let mistakeNo = 0;
-const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "RICE", "PIZZA", "SUSHI","PASTA", "CAT", "LION", "DUCK","PANDA"]
+const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "RICE", "PIZZA", "SUSHI", "PASTA", "CAT", "LION", "DUCK", "PANDA"]
 
 /*caching*/
 const startButton = document.querySelector('#start-btn')
@@ -25,11 +25,11 @@ function startGame() {
     guessed = []
     restartButton.style.backgroundColor = ''
     message.textContent = ""
-      for (let i = 0; i < heartsEl.length; i++) {
+    for (let i = 0; i < heartsEl.length; i++) {
         heartsEl[i].style.visibility = 'visible'
     }
-   
-    
+
+
 
 
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
@@ -40,6 +40,8 @@ function startGame() {
         letters[i].disabled = false
         letters[i].style.backgroundColor = ''
         letters[i].style.visibility = "visible"
+        letters[i].classList.remove('shake')
+
     }
 
 
@@ -55,9 +57,9 @@ function startGame() {
     hintMessage.innerHTML = "";
     const showHint = document.createElement('p');
 
-    if (["ITALY", "SPAIN", "BAHRAIN","CHINA"].includes(randomWord)) {
+    if (["ITALY", "SPAIN", "BAHRAIN", "CHINA"].includes(randomWord)) {
         showHint.textContent = "Hint: Country";
-    } else if (["RICE", "PIZZA", "SUSHI","PASTA"].includes(randomWord)) {
+    } else if (["RICE", "PIZZA", "SUSHI", "PASTA"].includes(randomWord)) {
         showHint.textContent = "Hint: Food";
     } else {
         showHint.textContent = "Hint: Animal";
@@ -67,6 +69,9 @@ function startGame() {
 
 
 }
+
+
+
 
 function lettersChoosing(event) {
     let clickedLetter = event.target.textContent
@@ -94,11 +99,15 @@ function lettersChoosing(event) {
         }
         if (won === true) {
             message.textContent = "You won!"
+
+
             disableLetters()
         }
     }
     if (mistakeNo === 6) {
         message.textContent = "You lost! The word was " + randomWord
+
+
         disableLetters()
     }
 
@@ -129,10 +138,13 @@ function mistakes(event) {
     event.target.style.backgroundColor = 'red'
     event.target.disabled = true
     fullBody.src = stages[mistakeNo]
-heartsEl[mistakeNo - 1].style.visibility = 'hidden'}
+    event.target.classList.add('shake')
+
+    heartsEl[mistakeNo - 1].style.visibility = 'hidden'
+}
 
 
-    
+
 
 
 
