@@ -2,6 +2,7 @@ let randomWord = "";
 let guessed = [];   // letters already picked
 let mistakeNo = 0;
 const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "RICE", "PIZZA", "SUSHI","PASTA", "CAT", "LION", "DUCK","PANDA"]
+
 /*caching*/
 const startButton = document.querySelector('#start-btn')
 const restartButton = document.querySelector('#restart')
@@ -10,6 +11,8 @@ const wordDisplay = document.querySelector('#word-display')
 const hintMessage = document.querySelector('#hint')
 const fullBody = document.querySelector('#img')
 const message = document.querySelector('#message')
+const heartsEl = document.querySelectorAll('.heart')
+
 
 console.log(startButton)
 console.log(restartButton)
@@ -22,6 +25,11 @@ function startGame() {
     guessed = []
     restartButton.style.backgroundColor = ''
     message.textContent = ""
+      for (let i = 0; i < heartsEl.length; i++) {
+        heartsEl[i].style.visibility = 'visible'
+    }
+   
+    
 
 
     const randomIndex = Math.floor(Math.random() * wordsArray.length);
@@ -121,7 +129,11 @@ function mistakes(event) {
     event.target.style.backgroundColor = 'red'
     event.target.disabled = true
     fullBody.src = stages[mistakeNo]
-}
+heartsEl[mistakeNo - 1].style.visibility = 'hidden'}
+
+
+    
+
 
 
 /*Event Listners*/

@@ -179,3 +179,10 @@ position: relative;
 }
 
 
+#hearts {
+  position: absolute;
+  top: 20px;        /* same height as the HANGMAN title, adjust to match */
+  right: 40px;      /* distance from the right edge */
+  font-size: 30px;
+  letter-spacing: 6px;
+}
