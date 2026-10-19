@@ -1,8 +1,8 @@
 let randomWord = "";
 let guessed = [];   // letters already picked
 let mistakeNo = 0;
-const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "RICE", "PIZZA", "SUSHI", "CAT", "LION", "DUCK"]
-//caching
+const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "RICE", "PIZZA", "SUSHI","PASTA", "CAT", "LION", "DUCK","PANDA"]
+/*caching*/
 const startButton = document.querySelector('#start-btn')
 const restartButton = document.querySelector('#restart')
 const letters = document.querySelectorAll('.letters')
@@ -15,7 +15,7 @@ console.log(startButton)
 console.log(restartButton)
 console.log(letters)
 
-//functions
+/*functions*/
 function startGame() {
     mistakeNo = 0;
     fullBody.src = stages[0]
@@ -47,9 +47,9 @@ function startGame() {
     hintMessage.innerHTML = "";
     const showHint = document.createElement('p');
 
-    if (["ITALY", "SPAIN", "BAHRAIN"].includes(randomWord)) {
+    if (["ITALY", "SPAIN", "BAHRAIN","CHINA"].includes(randomWord)) {
         showHint.textContent = "Hint: Country";
-    } else if (["RICE", "PIZZA", "SUSHI"].includes(randomWord)) {
+    } else if (["RICE", "PIZZA", "SUSHI","PASTA"].includes(randomWord)) {
         showHint.textContent = "Hint: Food";
     } else {
         showHint.textContent = "Hint: Animal";
@@ -95,8 +95,8 @@ function lettersChoosing(event) {
     }
 
 }
-function disableLetters(){
-    for(let i=0; i<letters.length; i++){
+function disableLetters() {
+    for (let i = 0; i < letters.length; i++) {
         letters[i].disabled = true
     }
 }
@@ -124,10 +124,7 @@ function mistakes(event) {
 }
 
 
-
-
-
-//Event Listner
+/*Event Listners*/
 startButton.addEventListener('click', startGame)
 restartButton.addEventListener('click', startGame)
 for (let i = 0; i < letters.length; i++) {

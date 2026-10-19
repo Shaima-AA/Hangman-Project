@@ -127,7 +127,7 @@ body {
   border:black 3px  solid;
   border-radius: 30px;
   background-color: rgb(255, 251, 0);
-  width: 90px;
+  width: 200px;
   margin: 2px;  
   
   font-family: "VT323", monospace;
@@ -146,6 +146,8 @@ body {
 
 #word-display{
 margin-left: 500px;
+position: relative;
+top: -90px;
 }
 
 
@@ -160,8 +162,20 @@ margin-left: 500px;
   color: white;
 }
 
+#hint{
+   position: relative;
+  top: -90px;
+}
 #hint p{
 color: red;
 margin-right: 100px;
 margin-top: -48px;
 }
+
+#message{
+  color: aliceblue;
+position: relative;
+  top: -90px;
+}
+
+
