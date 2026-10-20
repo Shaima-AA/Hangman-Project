@@ -1,11 +1,16 @@
 let randomWord = "";
 let guessed = [];   // letters already picked
 let mistakeNo = 0;
-const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA","KUWAIT","CANADA","RICE", "PIZZA", "SUSHI", "PASTA","COOKIES", "CAT", "LION", "DUCK", "PANDA","TIGER"]
-
+const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "KUWAIT", "CANADA", "RICE", "PIZZA", "SUSHI", "PASTA", "COOKIES", "MONKEY", "LION", "DUCK", "PANDA", "TIGER"]
+const winSound = new Audio('./win.wav');
+const loseSound = new Audio('./lose.wav');
+const correctLetter = new Audio('./CORRECTLETTER.wav')
+const wrongLetter = new Audio('./wrongletter.wav')
+const clickSound = new Audio('./buttonclick sound.wav')
 /*caching*/
 const startButton = document.querySelector('#start-btn')
 const restartButton = document.querySelector('#restart')
+
 const letters = document.querySelectorAll('.letters')
 const wordDisplay = document.querySelector('#word-display')
 const hintMessage = document.querySelector('#hint')
@@ -20,6 +25,8 @@ console.log(letters)
 
 /*functions*/
 function startGame() {
+   clickSound.play()
+    //resetting
     mistakeNo = 0;
     fullBody.src = stages[0]
     guessed = []
@@ -54,12 +61,13 @@ function startGame() {
         blank.dataset.letter = randomWord[i];
         wordDisplay.appendChild(blank);
     }
+
     hintMessage.innerHTML = "";
     const showHint = document.createElement('p');
 
-    if (["ITALY", "SPAIN", "BAHRAIN", "CHINA","KUWAIT","CANADA"].includes(randomWord)) {
+    if (["ITALY", "SPAIN", "BAHRAIN", "CHINA", "KUWAIT", "CANADA"].includes(randomWord)) {
         showHint.textContent = "Hint: Country";
-    } else if (["RICE", "PIZZA", "SUSHI", "PASTA","COOKIES"].includes(randomWord)) {
+    } else if (["RICE", "PIZZA", "SUSHI", "PASTA", "COOKIES"].includes(randomWord)) {
         showHint.textContent = "Hint: Food";
     } else {
         showHint.textContent = "Hint: Animal";
@@ -68,7 +76,7 @@ function startGame() {
     hintMessage.appendChild(showHint);
 
 
-}
+}//end of startGame() function
 
 
 
@@ -82,11 +90,13 @@ function lettersChoosing(event) {
 
         if (clickedLetter === randomWord[i]) {
             Blanks[i].textContent = clickedLetter;   // only blank number i
+            correctLetter.play()
             event.target.style.visibility = 'hidden'
             found = true;
         }
     }
     if (found === false) {
+        wrongLetter.play()
         mistakes(event)
     }
 
@@ -99,15 +109,13 @@ function lettersChoosing(event) {
         }
         if (won === true) {
             message.textContent = "You won!⭐"
-
-
+            winSound.play()
             disableLetters()
         }
     }
     if (mistakeNo === 6) {
         message.textContent = "You lost!😞 The word was " + randomWord
-
-
+        loseSound.play()
         disableLetters()
     }
 
