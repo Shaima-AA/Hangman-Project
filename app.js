@@ -1,7 +1,7 @@
 let randomWord = "";
 let guessed = [];   // letters already picked
 let mistakeNo = 0;
-const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA", "RICE", "PIZZA", "SUSHI", "PASTA", "CAT", "LION", "DUCK", "PANDA"]
+const wordsArray = ["ITALY", "SPAIN", "BAHRAIN", "CHINA","KUWAIT","CANADA","RICE", "PIZZA", "SUSHI", "PASTA","COOKIES", "CAT", "LION", "DUCK", "PANDA","TIGER"]
 
 /*caching*/
 const startButton = document.querySelector('#start-btn')
@@ -57,9 +57,9 @@ function startGame() {
     hintMessage.innerHTML = "";
     const showHint = document.createElement('p');
 
-    if (["ITALY", "SPAIN", "BAHRAIN", "CHINA"].includes(randomWord)) {
+    if (["ITALY", "SPAIN", "BAHRAIN", "CHINA","KUWAIT","CANADA"].includes(randomWord)) {
         showHint.textContent = "Hint: Country";
-    } else if (["RICE", "PIZZA", "SUSHI", "PASTA"].includes(randomWord)) {
+    } else if (["RICE", "PIZZA", "SUSHI", "PASTA","COOKIES"].includes(randomWord)) {
         showHint.textContent = "Hint: Food";
     } else {
         showHint.textContent = "Hint: Animal";
@@ -98,14 +98,14 @@ function lettersChoosing(event) {
             }
         }
         if (won === true) {
-            message.textContent = "You won!"
+            message.textContent = "You won!⭐"
 
 
             disableLetters()
         }
     }
     if (mistakeNo === 6) {
-        message.textContent = "You lost! The word was " + randomWord
+        message.textContent = "You lost!😞 The word was " + randomWord
 
 
         disableLetters()

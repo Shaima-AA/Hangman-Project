@@ -29,4 +29,4 @@ Hangman is a classic word-guessing game. The program picks a secret word at rand
 ## Future Enhancements
 
 ## Credits
-E-mail: shaimaawadh55@gmail.com
+E- mail: shaimaawadh55@gmail.com
